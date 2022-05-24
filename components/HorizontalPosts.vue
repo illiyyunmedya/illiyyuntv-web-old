@@ -1,11 +1,7 @@
 <template>
   <div class="container-fluid">
     <div class="row">
-      <div
-        class="col-md-3"
-        v-for="(post, index) in posts"
-        :key="`horizontal-post-${index}`"
-      >
+      <div class="col-md-3" v-for="(post, index) in posts" :key="`horizontal-post-${index}`">
         <div class="">
           <nuxt-link class="card-link" :to="`/blog/${post.slug}`">
             <img :src="post.image.url" alt="" />
@@ -14,11 +10,10 @@
             <p class="card-text">
               {{ post.title }}
             </p>
-            <p class="card-date text-muted">
-              {{ getPhotoDate(post) }}
-            </p>
-            <p class="card-date text-muted">
-              {{ post.views ? post.views : 1 }} Görüntülenme
+            <p class="d-flex justify-content-end align-items-center card-date text-muted">
+              <small>{{ getPhotoDate(post) }}</small>
+              <i class="dot rounded-circle bg-muted" />
+              <small>{{ post.views ? post.views : 1 }} Görüntülenme</small>
             </p>
           </div>
         </div>
@@ -45,30 +40,47 @@ export default {
       if (dd < 10) dd = "0" + dd;
       if (mm < 10) mm = "0" + mm;
 
-      const returnDate = dd + "/" + mm + "/" + yyyy;
-      return returnDate;
+      //const returnDate = dd + "/" + mm + "/" + yyyy;
+
+      return yyyy;
     },
   },
 };
 </script>
 
 <style lang="scss" scoped>
+
+.bg-muted{
+  background-color: #6c757d!important;
+}
+.dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin: -4px 5px 0 5px;
+}
+
 .card {
   background: none;
 }
+
 .card-body {
   padding: 1.25rem 0;
 }
+
 .card-text {
   font-size: 1.2rem;
   margin: 0;
 }
+
 .card-date {
   margin: 0;
 }
+
 .card-link {
   height: 250px;
   overflow: hidden;
+
   img {
     width: 100%;
   }

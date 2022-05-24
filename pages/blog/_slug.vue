@@ -4,51 +4,44 @@
     <div v-if="fetched" class="container-fluid">
       <div class="row">
         <div class="col">
-          <div class="p-2">
+          <div class="px-2 pb-2">
             <div class="image-container">
-              <img
-                class="blog-img"
-
-                :src="getImg"
-                :alt="blog.title"
-              />
+              <img class="blog-img" :src="getImg" :alt="blog.title" />
             </div>
             <div class="mt-5 blog-content">
               <div class="title-section">
                 <h1>{{ blog.title }}</h1>
                 <div class="share-icons">
-                  <p>{{convertDate(blog.created_at)}}</p>
-                  <p>{{ blog.views ? blog.views + 1 : 2 }} Görüntülenme</p>
+                  <span class="dot-item text-muted">{{ convertDate(blog.created_at) }}</span>
+                  <i class="dot rounded-circle bg-muted" />
+                  <span class="dot-item text-muted">{{ blog.views ? blog.views + 1 : 2 }} Görüntülenme</span>
                   <i class="fa fa-twitter" @click="share('twitter')"></i>
                   <i class="fa fa-facebook" @click="share('facebook')"></i>
                   <i class="fa fa-telegram" @click="share('telegram')"></i>
                   <i class="fa fa-whatsapp" @click="share('whatsapp')"></i>
                 </div>
               </div>
-              <markdown-it-vue
-                class="mt-3"
-                :content="blog.detail ? blog.detail : ''"
-              />
+              <markdown-it-vue class="mt-3" :content="blog.detail ? blog.detail : ''" />
             </div>
           </div>
         </div>
         <div class="col col-posts">
-          <div class="p-4">
-            <div
-              class="card mb-4 box-shadow"
-              v-for="(post, index) in otherBlogs"
-              :key="`blog-${index}`"
-            >
+          <div class="px-4 pb-2">
+            <div class="card mb-2 box-shadow" v-for="(post, index) in otherBlogs" :key="`blog-${index}`">
               <nuxt-link class="card-link" :to="`/blog/${post.slug}`">
                 <img :src="post.image.url" alt="" />
               </nuxt-link>
               <div class="card-body">
-                <p class="card-text">
+                <div class="card-text">
                   {{ post.title }}
-                </p>
-                <p class="card-date">
-                  {{ $timeCreate(post.created_at) }}
-                </p>
+                </div>
+                <div class="d-flex justify-content-end align-items-center text-muted">
+                  <small class="mr-2">
+                    {{ /*$timeCreate(post.created_at)*/ new Date(post.created_at).getFullYear() }}
+                  </small>
+                  <i class="dot rounded-circle bg-muted" />
+                  <small class="ml-2">{{ post.views ? post.views : 1 }} Görüntülenme</small>
+                </div>
               </div>
             </div>
           </div>
@@ -65,7 +58,7 @@ export default {
       `/blogs?slug=${this.$route.params.slug}`
     );
 
-     await this.$axios.get(
+    await this.$axios.get(
       `/blogs/increment/${data[0].id}`
     );
 
@@ -136,9 +129,9 @@ export default {
         case "twitter":
           window.open(
             "https://twitter.com/intent/tweet?url=" +
-              pageUrl +
-              "&text=" +
-              pageTitle,
+            pageUrl +
+            "&text=" +
+            pageTitle,
             "_blank",
           );
           break;
@@ -155,11 +148,25 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.bg-muted {
+  background-color: #6c757d !important;
+}
+
+.dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-top: -4px;
+}
+
+
+
 .title-section {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 .col-posts {
   flex: 0 0 450px;
   position: sticky;
@@ -167,29 +174,39 @@ export default {
   max-height: 100vh;
   overflow-y: auto;
 }
+
 .image-container {
   text-align: center;
 }
-.fa{
+
+.fa {
   font-size: 22px;
   cursor: pointer;
 }
-.share-icons{
+
+.share-icons {
   display: flex;
   gap: 20px;
+  align-items: center;
+  justify-content: end;
+  margin-bottom: 10px;
 }
+
 .card {
   background: none;
+
   .card-body {
     padding: 10px 0;
     font-size: 18px;
   }
+
   .card-link {
     img {
       max-width: 100%;
     }
   }
 }
+
 .fa-twitter {
   color: #1da1f2;
 }
@@ -205,17 +222,20 @@ export default {
 .fa-whatsapp {
   color: #4fce5d;
 }
+
 .blog-img {
-    object-fit: cover;
-    width: 100%;
-    max-height: 400px;
+  object-fit: cover;
+  width: 100%;
+  max-height: 400px;
 }
+
 @media (max-width: 500px) {
   .blog-img {
     object-fit: contain;
     max-width: 100%;
   }
-  .title-section{
+
+  .title-section {
     flex-direction: column;
   }
 }

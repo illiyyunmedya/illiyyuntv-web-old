@@ -13,8 +13,8 @@ export default {
     const { data: homeBanner } = await this.$axios.get("/banner");
 
     data.sort((a, b) => {
-        return new Date(b.created_at) - new Date(a.created_at);
-      });
+      return new Date(b.created_at) - new Date(a.created_at);
+    });
 
     this.posts = data;
     this.homeBanner = homeBanner.Image ? homeBanner.Image.url : "";
@@ -41,21 +41,27 @@ export default {
     },
   },
   mounted() {
-    this.$refs["app-modal"].show();
+    try {
 
-    setInterval(() => {
-      this.say--;
 
-      if (this.say == 0) {
-        this.$refs["app-modal"].hide();
-      }
-    }, 1000);
+      this.$refs["app-modal"].show();
+
+      setInterval(() => {
+        this.say--;
+
+        if (this.say == 0) {
+          this.$refs["app-modal"].hide();
+        }
+      }, 1000);
+    } catch (error) {
+
+    }
   },
 };
 </script>
 
 <style scoped>
- ::v-deep #cover {
+::v-deep #cover {
   height: 550px;
 }
 
