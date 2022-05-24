@@ -141,6 +141,7 @@ Flexbox and floats are used as a fallback so that browsers which don't support g
   display: flex;
   flex-wrap: wrap;
   padding-bottom: 3rem;
+  margin-top: -16px;
 }
 
 .gallery-item {
