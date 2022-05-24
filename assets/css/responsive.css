@@ -1,0 +1,110 @@
+@media only screen and (min-width: 576px) {
+  .sola-kaydir {
+    max-width: 50% !important;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  #videoBaslik {
+    font-size: 21px !important;
+  }
+  #footerContact .pr-2 {
+    padding-right: 0px !important;
+  }
+  #boslukDiv {
+    display: none;
+  }
+
+  #homeHeader {
+    max-height: 300px;
+  }
+
+  .mobilHeightCover {
+    background-position-y: 72.5px;
+  }
+
+  .home {
+    height: 200px !important;
+  }
+
+  #footerContact {
+    margin-top: 30px;
+  }
+
+  .gallery {
+    display: inline !important;
+  }
+
+  .modal-dialog {
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .modal-content {
+    height: 100% !important;
+    min-height: 100% !important;
+    height: auto !important;
+    border-radius: 0 !important;
+  }
+
+  #pcMenu {
+    display: none !important;
+  }
+
+  #mobilMenu {
+    display: flex !important;
+  }
+
+  #searchDiv {
+    display: none;
+  }
+
+  #galleryPrevIcon {
+    left: 0 !important;
+  }
+
+  #galleryNextIcon {
+    right: 0 !important;
+  }
+
+  #videosPageCover {
+    margin-bottom: -40px;
+  }
+
+  .my-sidebar {
+    -ms-flex: 0 0 100% !important;
+    flex: 0 0 100% !important;
+  }
+
+  #videoPageContainer {
+    padding: 0 !important;
+    margin: 0 1 !important;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  #searchDiv {
+    width: 90% !important;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+}
+
+@media only screen and (max-width: 1200px) {
+  #videoCol {
+    max-width: none;
+    min-width: 100%;
+  }
+
+  #videoContent {
+    margin: auto;
+    max-width: 900px !important;
+    max-height: 600px !important;
+  }
+
+  .my-sidebar {
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+  }
+}
