@@ -7,9 +7,11 @@ export default {
     }
   },
   mounted() {
+
     window.addEventListener('scroll', this.onScroll)
   },
   beforeDestroy() {
+
     window.removeEventListener('scroll', this.onScroll)
   },
   methods: {
@@ -20,10 +22,16 @@ export default {
       })
     },
     onScroll() {
-      this.showNavbar = false
-      setTimeout(() => {
-        this.showNavbar = true
-      }, 4000);
+      this.showNavbar = true
+      if (window.scrollY < this.lastScrollPosition) {
+        this.showNavbar = false
+        setTimeout(() => {
+          this.showNavbar = true
+        }, 5000);
+
+      }
+      this.lastScrollPosition = window.scrollY
+
 
 
     }

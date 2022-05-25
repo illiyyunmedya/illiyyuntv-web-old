@@ -39,7 +39,7 @@
                 <div class="card-text">
                   {{ post.title }}
                 </div>
-                <div class="d-flex justify-content-end align-items-center text-muted">
+                <div class="d-flex justify-content-start align-items-center text-muted">
                   <small class="mr-2">
                     {{ $timeCreate(post.created_at) }}
                   </small>
