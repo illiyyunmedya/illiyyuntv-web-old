@@ -10,7 +10,7 @@
             <p class="card-text">
               {{ post.title }}
             </p>
-            <p class="d-flex justify-content-end align-items-center card-date text-muted">
+            <p class="d-flex justify-content-start align-items-center card-date text-muted">
               <small>{{ getPhotoDate(post) }}</small>
               <i class="dot rounded-circle bg-muted" />
               <small>{{ post.views ? post.views : 1 }} Görüntülenme</small>
@@ -40,9 +40,9 @@ export default {
       if (dd < 10) dd = "0" + dd;
       if (mm < 10) mm = "0" + mm;
 
-      //const returnDate = dd + "/" + mm + "/" + yyyy;
+      const returnDate = dd + "/" + mm + "/" + yyyy;
 
-      return yyyy;
+      return returnDate;
     },
   },
 };

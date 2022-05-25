@@ -11,14 +11,18 @@
             <div class="mt-5 blog-content">
               <div class="title-section">
                 <h1>{{ blog.title }}</h1>
-                <div class="share-icons">
-                  <span class="dot-item text-muted">{{ convertDate(blog.created_at) }}</span>
-                  <i class="dot rounded-circle bg-muted" />
-                  <span class="dot-item text-muted">{{ blog.views ? blog.views + 1 : 2 }} Görüntülenme</span>
-                  <i class="fa fa-twitter" @click="share('twitter')"></i>
-                  <i class="fa fa-facebook" @click="share('facebook')"></i>
-                  <i class="fa fa-telegram" @click="share('telegram')"></i>
-                  <i class="fa fa-whatsapp" @click="share('whatsapp')"></i>
+                <div class="d-flex flex-wrap align-items-center justify-content-end">
+                  <div class="d-flex align-items-center text-center mb-2">
+                    <span class="dot-item text-muted">{{ convertDate(blog.created_at) }}</span>
+                    <i class="dot mx-2 rounded-circle bg-muted" />
+                    <span class="dot-item text-muted">{{ blog.views ? blog.views + 1 : 2 }} Görüntülenme</span>
+                  </div>
+                  <div class="share-icons ml-3">
+                    <i class="fa fa-twitter" @click="share('twitter')"></i>
+                    <i class="fa fa-facebook" @click="share('facebook')"></i>
+                    <i class="fa fa-telegram" @click="share('telegram')"></i>
+                    <i class="fa fa-whatsapp" @click="share('whatsapp')"></i>
+                  </div>
                 </div>
               </div>
               <markdown-it-vue class="mt-3" :content="blog.detail ? blog.detail : ''" />
@@ -37,7 +41,7 @@
                 </div>
                 <div class="d-flex justify-content-end align-items-center text-muted">
                   <small class="mr-2">
-                    {{ /*$timeCreate(post.created_at)*/ new Date(post.created_at).getFullYear() }}
+                    {{ $timeCreate(post.created_at) }}
                   </small>
                   <i class="dot rounded-circle bg-muted" />
                   <small class="ml-2">{{ post.views ? post.views : 1 }} Görüntülenme</small>
@@ -156,7 +160,7 @@ export default {
   display: inline-block;
   width: 6px;
   height: 6px;
-  margin-top: -4px;
+  margin-top: -3px;
 }
 
 
@@ -190,6 +194,7 @@ export default {
   align-items: center;
   justify-content: end;
   margin-bottom: 10px;
+  flex-wrap: wrap;
 }
 
 .card {
