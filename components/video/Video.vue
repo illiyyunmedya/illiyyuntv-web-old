@@ -399,7 +399,7 @@
           </div>
         </div>
         <div class="col my-sidebar">
-          <div class="d-flex justify-content-between">
+          <div class="d-flex justify-content-between mt-2">
             <span style="line-height: 100%"><small>Sıradaki</small></span>
             <span style="line-height: 100%"
               ><small>OTOMATİK OYNAT&nbsp;&nbsp;</small>
