@@ -76,6 +76,6 @@ export default {
   ],
 
   axios: {
-    baseURL: process.env.API_URL || 'https://illiyyuntv-api.herokuapp.com/'
+    baseURL: process.env.BASE_URL || 'https://illiyyuntv-api.herokuapp.com/'
   }
 }
